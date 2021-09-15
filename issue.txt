@@ -1,0 +1,10 @@
+1, aosp 代码download 双系统，
+
+2. emulator的编译
+
+3. git仓库的操作，以及配置
+
+4. git 无法clone代码，解决办法；git 在2021 0821之后支持 
+
+
+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
