@@ -7,12 +7,13 @@
 
 ## RIL框架结构
     RIL(Radio Interface Layer, 无线电通信接口层)在Android中的实现代码可以大致分为两大部分：
+
         1.Framework框架层中Java相关程序，简称RILJ
         2.HAL层中的c/c++程序，简称RILC
 
 如图：
 
-![ril-arch](./pic/ril-arch.png)
+![ril-arch](https://github.com/GaryTsuiC/GaryTsui.github.io/blob/main/Android/RIL/pic/ril-arch.png)
 
     RILC包括三部分RILD、Libril、Reference-ril，核心代码主要分布在rild、libril、reference-ril三个目录下。编译后会生成libril.so、libreference-ril.so动态链接库文件和rild可执行文件。
 
@@ -28,25 +29,25 @@
 
 如图：
 
-![ril-arch](./pic/rild-list.png)
+![ril-arch](https://github.com/GaryTsuiC/GaryTsui.github.io/blob/main/Android/RIL/pic/rild-list.png)
 
     按照模块分别编译，可以得到libril.so, libreference-ril.so和rild的结果文件。各自make以及其产物：
 
-![ril-arch](./pic/make-rild.png)
+![ril-arch](https://github.com/GaryTsuiC/GaryTsui.github.io/blob/main/Android/RIL/pic/make-libril.png)
 
-![ril-arch](./pic/make-libril.png)
+![ril-arch](https://github.com/GaryTsuiC/GaryTsui.github.io/blob/main/Android/RIL/pic/make-libril.png)
 
-![ril-arch](./pic/make-reference-ril.png)
+![ril-arch](https://github.com/GaryTsuiC/GaryTsui.github.io/blob/main/Android/RIL/pic/make-reference-ril.png)
 
-![ril-arch](./pic/make-ril-out.png)
+![ril-arch](https://github.com/GaryTsuiC/GaryTsui.github.io/blob/main/Android/RIL/pic/make-ril-out.png)
 
 ### 2.1 RILC运行机制
 
-![ril-arch](./pic/rilc-arch.png)
+![ril-arch](https://github.com/GaryTsuiC/GaryTsui.github.io/blob/main/Android/RIL/pic/rilc-arch.png)
 
 ### 2.2 RILD启动
 
-![ril-arch](./pic/rild-init.png)
+![ril-arch](https://github.com/GaryTsuiC/GaryTsui.github.io/blob/main/Android/RIL/pic/rild-init.png)
 
     入口函数主要完成了3个作用：
     1、开启EventLoop循环，完成RIL与RILJ层数据交互（HIDL）
