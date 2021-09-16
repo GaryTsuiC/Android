@@ -33,21 +33,35 @@
 
     按照模块分别编译，可以得到libril.so, libreference-ril.so和rild的结果文件。各自make以及其产物：
 
-![ril-arch](https://github.com/GaryTsuiC/GaryTsui.github.io/blob/main/Android/RIL/pic/make-libril.png)
+![ril-rild](https://github.com/GaryTsuiC/GaryTsui.github.io/blob/main/Android/RIL/pic/make-rildpng)
 
-![ril-arch](https://github.com/GaryTsuiC/GaryTsui.github.io/blob/main/Android/RIL/pic/make-libril.png)
+![ril-libril-out](https://github.com/GaryTsuiC/GaryTsui.github.io/blob/main/Android/RIL/pic/make-libril.png)
 
-![ril-arch](https://github.com/GaryTsuiC/GaryTsui.github.io/blob/main/Android/RIL/pic/make-reference-ril.png)
+![ril-referehce-out](https://github.com/GaryTsuiC/GaryTsui.github.io/blob/main/Android/RIL/pic/make-reference-ril.png)
 
-![ril-arch](https://github.com/GaryTsuiC/GaryTsui.github.io/blob/main/Android/RIL/pic/make-ril-out.png)
+![ril-out](https://github.com/GaryTsuiC/GaryTsui.github.io/blob/main/Android/RIL/pic/make-ril-out.png)
 
 ### 2.1 RILC运行机制
 
 ![ril-arch](https://github.com/GaryTsuiC/GaryTsui.github.io/blob/main/Android/RIL/pic/rilc-arch.png)
 
-### 2.2 RILD启动
+### 2.2 RILC启动
 
-![ril-arch](https://github.com/GaryTsuiC/GaryTsui.github.io/blob/main/Android/RIL/pic/rild-init.png)
+#### 2.2.1 RILC 加载入口
+
+    Android手机在开机过程中，linux Kernel会运行rild可执行文件以及启动libril；在 pixel3/system/core/rootdir/init.rc配置文件中，标定了RILC启动相关的配置信息：
+
+![rilc-init-rc](./pic/init-rc.png)
+
+    在init.rc中import了 vecdor/etc/init/hw/init.$(ro.hardware).rc,which means  pixel3/hardware/ril/rild/rild.rc
+
+![rilc-init-rc](./pic/rild-daemon-ril.png)   
+
+#### 2.2.2 RILD启动
+
+    rild加载从rild.c main函数中开始启动，启动时序图如下：
+
+![rild-init](https://github.com/GaryTsuiC/GaryTsui.github.io/blob/main/Android/RIL/pic/rild-init.png)
 
     入口函数主要完成了3个作用：
     1、开启EventLoop循环，完成RIL与RILJ层数据交互（HIDL）
