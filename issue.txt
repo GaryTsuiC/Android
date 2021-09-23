@@ -7,4 +7,9 @@
 4. git 无法clone代码，解决办法；git 在2021 0821之后支持 
 
 
+5、Android Init流程
+
+6、数据结构与算法
+
+
 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
